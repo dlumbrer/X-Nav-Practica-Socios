@@ -1,15 +1,48 @@
 $(document).ready(function() {
     $( "#tabs" ).tabs();
+    
+    //TAB MYLINE
     $( "#tabmyline" ).click(function(){
-        alert("Ahora cargaria el JSONP")
+        $.getJSON("myline.json").done(function( data ) {
+            insertarMensajesAntes(data, "#myline")
+        }).fail(function(){ 
+            $("<strong>").text("No hay mensajes de usuario").prependTo("#myline");
+        });
     });
+    
+    //TAB TIMELINE
     $.getJSON("timeline.json").done(function( data ) {
-          $.each( data, function(i, item) {
-             $("<p>").text("De: " + item["autor"]).appendTo("#timeline");
-            $("<img>").attr("src", item["avatar"]).appendTo("#timeline");
-             $("<p>").text("Titulo: " + item["titulo"]).appendTo("#timeline");
-             $("<p>").text("Contenido: " + item["contenido"]).appendTo("#timeline");
-             $("<p>").text("Fecha: " + item["fecha"]).appendTo("#timeline");
+          insertarMensajesAntes(data, "#timeline");
+    });
+        
+    
+    //SI HAY MENSAJES NUEVOS
+    $.getJSON("update.json").done(function( data ) {
+          $("<button>").html("Hay " + data.length + " mensajes nuevos").prependTo("#timeline").click(function(){
+                insertarMensajesAntes(data, "#timeline")
+                $(this).hide();
+            })
+    }).fail(function(){  
+        $("<strong>").text("No hay mensajes nuevos").prependTo("#timeline");
+    });
+    
+    
+    
+    function insertarMensajesAntes(data, place){
+        $.each( data, function(i, item) {
+             $("</div>").prependTo(place); 
+             $("<button>").html("Mostrar más").prependTo(place).click(function(){
+                 $("<p>Contenido: " + item["contenido"] + "</p>").insertBefore(this);
+                 $("<p>Fecha: " + item["fecha"] + "</p>").insertBefore(this);
+                 $(this).hide();
+             });
+             $("<p>").text("Titulo: " + item["titulo"]).prependTo(place);
+             $("<p>").text("De: " + item["autor"]).prependTo(place);
+             $("<img>").attr("src", item["avatar"]).prependTo(place);
+             
+             $("<div class='casilla'>").prependTo(place);
           });
-    }); 
+    }
+
+
 });

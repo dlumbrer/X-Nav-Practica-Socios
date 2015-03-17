@@ -1,7 +1,20 @@
 [
-{"autor": "Maria Juana Alonso Perez",
+{"autor": "Jesús Saiz",
+"avatar": "https://media.licdn.com/mpr/mpr/shrink_500_500/p/2/000/25c/0c6/356b8a4.jpg",
+"titulo": "Windows",
+"contenido": "Probando mi app de Formula 1 en mi Windows Phone",
+"fecha": "19/01/2015"},
+
+{"autor": "Fernando Yustas",
+"avatar": "https://avatars3.githubusercontent.com/u/9249216?v=3&s=460",
+"titulo": "Estudiando",
+"contenido": "Este finde toca estudiar un poco PDAC",
+"fecha": "20/02/2015"},
+
+{"autor": "Maria Antonieta",
 "avatar": "http://media.melty.es/article-1059675-ajust_930/cara-delevingne.jpg",
-"titulo": "Estoy feliz",
-"contenido": "Al fin tras 829348327916751678429 convocatorias he aprobado PDAC!!!!!!!!!!!!!!!!!",
-"fecha": "19/02/2015"}
+"titulo": "Aburrida",
+"contenido": "Me voy a estudiar con el de abajo",
+"fecha": "21/02/2015"}
+
 ]
