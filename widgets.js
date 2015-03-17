@@ -3,6 +3,7 @@ $(document).ready(function() {
     
     //TAB MYLINE
     $( "#tabmyline" ).click(function(){
+        $( "#myline" ).empty();
         $.getJSON("myline.json").done(function( data ) {
             insertarMensajesAntes(data, "#myline")
         }).fail(function(){ 
